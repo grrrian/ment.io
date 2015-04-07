@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jeff-collins/ment.io.git"
+    "url": "https://github.com/RenaudParent/ment.io.git"
   },
   "keywords": [
     "angular",
@@ -19,9 +19,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jeff-collins/ment.io/issues"
+    "url": "https://github.com/RenaudParent/ment.io/issues"
   },
-  "homepage": "https://github.com/jeff-collins/ment.io",
+  "homepage": "https://github.com/RenaudParent/ment.io",
   "devDependencies": {
     "connect-livereload": "^0.4.0",
     "express": "^4.1.2",
