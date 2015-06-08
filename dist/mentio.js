@@ -251,7 +251,6 @@ angular.module('mentio', [])
                 scope.triggerCharMap = {};
 
                 scope.targetElement = element;
-                attrs.$set('autocomplete','off');
 
                 if (attrs.mentioItems) {
                     scope.localItems = [];
