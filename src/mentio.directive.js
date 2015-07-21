@@ -16,7 +16,8 @@ angular.module('mentio', [])
                 requireLeadingSpace: '=mentioRequireLeadingSpace',
                 selectNotFound: '=mentioSelectNotFound',
                 trimTerm: '=mentioTrimTerm',
-                ngModel: '='
+                ngModel: '=',
+                menuPosition: '=mentioMenuPosition'
             },
             controller: function($scope, $timeout, $attrs) {
 
@@ -74,10 +75,6 @@ angular.module('mentio', [])
                     if ($scope.iframeElement) {
                         return {iframe: $scope.iframeElement};
                     }
-                };
-
-                $scope.displayAbove =  function() {
-                    return $attrs.mentioMenuPosition === 'top';
                 };
 
                 $scope.replaceText = function (text, hasTrailingSpace) {
@@ -266,6 +263,9 @@ angular.module('mentio', [])
 
                     if (attrs.mentioTemplateUrl) {
                         html = html + ' mentio-template-url="' + attrs.mentioTemplateUrl + '"';
+                    }
+                    if (scope.menuPosition) {
+                        html = html + ' mentio-menu-position="\'' + scope.menuPosition + '\'"';
                     }
                     html = html + ' mentio-trigger-char="\'' + scope.defaultTriggerChar + '\'"' +
                         ' mentio-parent-scope="parentScope"' +
@@ -466,7 +466,8 @@ angular.module('mentio', [])
                 items: '=mentioItems',
                 triggerChar: '=mentioTriggerChar',
                 forElem: '=mentioFor',
-                parentScope: '=mentioParentScope'
+                parentScope: '=mentioParentScope',
+                menuPosition: '=mentioMenuPosition'
             },
             templateUrl: function(tElement, tAttrs) {
                 return tAttrs.mentioTemplateUrl !== undefined ? tAttrs.mentioTemplateUrl : 'mentio-menu.tpl.html';
@@ -527,6 +528,12 @@ angular.module('mentio', [])
                     return $scope.visible;
                 };
 
+                $scope.displayAbove = function () {
+                    console.log('coucou');
+                    console.log($scope.menuPosition);
+                    return $scope.menuPosition === 'top';
+                };
+
                 $scope.showMenu = function () {
                     if (!$scope.visible) {
                         $scope.requestVisiblePendingSearch = true;
@@ -571,21 +578,19 @@ angular.module('mentio', [])
                             triggerCharSet.push(scope.triggerChar);
                             mentioUtil.popUnderMention(scope.parentMentio.context(),
                                 triggerCharSet, element, scope.requireLeadingSpace,
-                                scope.parentScope ? scope.parentScope.displayAbove(): false);
+                                scope.displayAbove());
                         }
                     }
                 );
 
-                if (scope.parentScope) {
-                    if (scope.parentScope.displayAbove()) {
-                        scope.$watch(function() {
-                            return element[0].scrollHeight;
-                        }, function(newValue, oldValue) {
-                            if(newValue!==oldValue) {
-                                mentioUtil.updatePositionTop(element, newValue, oldValue);
-                            }
-                        });
-                    }
+                if (scope.displayAbove()) {
+                    scope.$watch(function() {
+                        return element[0].scrollHeight;
+                    }, function(newValue, oldValue) {
+                        if(newValue!==oldValue) {
+                            mentioUtil.updatePositionTop(element, newValue, oldValue);
+                        }
+                    });
                 }
 
                 scope.$watch('items', function (items) {
@@ -607,7 +612,7 @@ angular.module('mentio', [])
                         triggerCharSet.push(scope.triggerChar);
                         mentioUtil.popUnderMention(scope.parentMentio.context(),
                             triggerCharSet, element, scope.requireLeadingSpace,
-                            scope.parentScope ? scope.parentScope.displayAbove() : false);
+                            scope.displayAbove());
                     }
                 });
 
