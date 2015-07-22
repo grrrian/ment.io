@@ -529,8 +529,6 @@ angular.module('mentio', [])
                 };
 
                 $scope.displayAbove = function () {
-                    console.log('coucou');
-                    console.log($scope.menuPosition);
                     return $scope.menuPosition === 'top';
                 };
 
