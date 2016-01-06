@@ -585,7 +585,7 @@ angular.module('mentio', [])
                     scope.$watch(function() {
                         return element[0].scrollHeight;
                     }, function(newValue, oldValue) {
-                        if(newValue!==oldValue) {
+                        if(Math.abs(newValue - oldValue) > 2) {
                             mentioUtil.updatePositionTop(element, newValue, oldValue);
                         }
                     });
