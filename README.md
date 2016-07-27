@@ -1,6 +1,8 @@
 ment.io
 ======
 
+grrrian: This fork removes scrolling to top and bottom on special characters: '&' and '('.
+
 [![Build Status](https://travis-ci.org/jeff-collins/ment.io.svg?branch=master)](https://travis-ci.org/jeff-collins/ment.io)
 [![Coverage Status](https://img.shields.io/coveralls/jeff-collins/ment.io.svg)](https://coveralls.io/r/jeff-collins/ment.io)
 

@@ -220,26 +220,6 @@ angular.module('mentio', [])
                                     activeMenuScope.hideMenu();
                                 });
                             }
-
-                            if (event.which === 40) {
-                                event.preventDefault();
-                                activeMenuScope.$apply(function () {
-                                    activeMenuScope.activateNextItem();
-                                });
-                                activeMenuScope.adjustScroll(1);
-                            }
-
-                            if (event.which === 38) {
-                                event.preventDefault();
-                                activeMenuScope.$apply(function () {
-                                    activeMenuScope.activatePreviousItem();
-                                });
-                                activeMenuScope.adjustScroll(-1);
-                            }
-
-                            if (event.which === 37 || event.which === 39) {
-                                event.preventDefault();
-                             }
                         }
                     }
                 );
@@ -303,29 +283,6 @@ angular.module('mentio', [])
                             activeMenuScope.$apply(function () {
                                 activeMenuScope.hideMenu();
                             });
-                            return false;
-                        }
-
-                        if (event.which === 40) {
-                            stopEvent(event);
-                            activeMenuScope.$apply(function () {
-                                activeMenuScope.activateNextItem();
-                            });
-                            activeMenuScope.adjustScroll(1);
-                            return false;
-                        }
-
-                        if (event.which === 38) {
-                            stopEvent(event);
-                            activeMenuScope.$apply(function () {
-                                activeMenuScope.activatePreviousItem();
-                            });
-                            activeMenuScope.adjustScroll(-1);
-                            return false;
-                        }
-
-                        if (event.which === 37 || event.which === 39) {
-                            stopEvent(event);
                             return false;
                         }
                     }

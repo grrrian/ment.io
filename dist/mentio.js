@@ -220,26 +220,6 @@ angular.module('mentio', [])
                                     activeMenuScope.hideMenu();
                                 });
                             }
-
-                            if (event.which === 40) {
-                                event.preventDefault();
-                                activeMenuScope.$apply(function () {
-                                    activeMenuScope.activateNextItem();
-                                });
-                                activeMenuScope.adjustScroll(1);
-                            }
-
-                            if (event.which === 38) {
-                                event.preventDefault();
-                                activeMenuScope.$apply(function () {
-                                    activeMenuScope.activatePreviousItem();
-                                });
-                                activeMenuScope.adjustScroll(-1);
-                            }
-
-                            if (event.which === 37 || event.which === 39) {
-                                event.preventDefault();
-                             }
                         }
                     }
                 );
@@ -303,29 +283,6 @@ angular.module('mentio', [])
                             activeMenuScope.$apply(function () {
                                 activeMenuScope.hideMenu();
                             });
-                            return false;
-                        }
-
-                        if (event.which === 40) {
-                            stopEvent(event);
-                            activeMenuScope.$apply(function () {
-                                activeMenuScope.activateNextItem();
-                            });
-                            activeMenuScope.adjustScroll(1);
-                            return false;
-                        }
-
-                        if (event.which === 38) {
-                            stopEvent(event);
-                            activeMenuScope.$apply(function () {
-                                activeMenuScope.activatePreviousItem();
-                            });
-                            activeMenuScope.adjustScroll(-1);
-                            return false;
-                        }
-
-                        if (event.which === 37 || event.which === 39) {
-                            stopEvent(event);
                             return false;
                         }
                     }
@@ -1289,4 +1246,4 @@ angular.module('mentio')
         };
     }]);
 
-angular.module("mentio").run(["$templateCache", function($templateCache) {$templateCache.put("mentio-menu.tpl.html","<style>\r\n.scrollable-menu {\r\n    height: auto;\r\n    max-height: 300px;\r\n    overflow: auto;\r\n}\r\n\r\n.menu-highlighted {\r\n    font-weight: bold;\r\n}\r\n</style>\r\n<ul class=\"dropdown-menu scrollable-menu\" style=\"display:block\">\r\n    <li mentio-menu-item=\"item\" ng-repeat=\"item in items track by $index\">\r\n        <a class=\"text-primary\" ng-bind-html=\"item.label | mentioHighlight:typedTerm:\'menu-highlighted\' | unsafe\"></a>\r\n    </li>\r\n</ul>");}]);
+angular.module("mentio").run(["$templateCache", function($templateCache) {$templateCache.put("mentio-menu.tpl.html","<style>\n.scrollable-menu {\n    height: auto;\n    max-height: 300px;\n    overflow: auto;\n}\n\n.menu-highlighted {\n    font-weight: bold;\n}\n</style>\n<ul class=\"dropdown-menu scrollable-menu\" style=\"display:block\">\n    <li mentio-menu-item=\"item\" ng-repeat=\"item in items track by $index\">\n        <a class=\"text-primary\" ng-bind-html=\"item.label | mentioHighlight:typedTerm:\'menu-highlighted\' | unsafe\"></a>\n    </li>\n</ul>");}]);
