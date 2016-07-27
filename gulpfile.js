@@ -54,7 +54,7 @@ gulp.task('dist', ['tpl'], function () {
         'src/templates.js'
     ])
     .pipe(gjshint())
-    //.pipe(gjshint.reporter(stylish))
+    .pipe(gjshint.reporter(stylish))
     .pipe(ngAnnotate())
     .pipe(concat('mentio.js'))
     .pipe(gulp.dest('dist'))
